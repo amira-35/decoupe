@@ -7,11 +7,14 @@ public class Main {
         tailleDisponible.add(277F);
         tailleDisponible.add(98F);
         tailleDisponible.add(105F);
+        tailleDisponible.add(131.5F);
+        tailleDisponible.add(156F);
+
         //tailleDisponible.add(100F);
         //tailleDisponible.add(100F);
         float minTube = 25;
         float TailleBobine = 1209;
-        float TailleBobineDemander = 277;
+        float TailleBobineDemander = 131.5F;
 
         Neud OptimaleSolution = Tools.DFS(tailleDisponible,TailleBobineDemander,TailleBobine,minTube);
         System.out.println("Le Chutte Finale= " + OptimaleSolution.chut);
