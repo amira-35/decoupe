@@ -55,18 +55,24 @@ public class Tools {
         }
         return listFils;
     }
-    static Neud DFS(List<Float> listeDesTubesDisponible, float tubeDemander, float TailleBobine, float minTube)
+    static List<Neud> DFS(List<Float> listeDesTubesDisponible, float tubeDemander, float TailleBobine, float minTube)
     {
         List<Neud> openList;
         openList = genererLesPermiersFils(TailleBobine,tubeDemander,minTube);
         Neud OptimaleSolution = new Neud(openList.get(0));
+        List<Neud> Fils = new ArrayList<>();
+        List<Neud> Listretorner = new ArrayList<>();
+
         while(openList.size() != 0){
             if(openList.get(0).poids >=0 && openList.get(0).poids < OptimaleSolution.poids){
                 OptimaleSolution = new Neud(openList.get(0));
             }
             Neud tempNeud = openList.remove(0);
-            openList.addAll(genenerLesFilsQuelconque(tempNeud,listeDesTubesDisponible,minTube));
+            Fils.clear();
+            Fils.addAll(genenerLesFilsQuelconque(tempNeud,listeDesTubesDisponible,minTube));
+            if(Fils.size() == 0) Listretorner.add(tempNeud);
+            openList.addAll(Fils);
         }
-        return OptimaleSolution;
+        return Listretorner;
     }
 }

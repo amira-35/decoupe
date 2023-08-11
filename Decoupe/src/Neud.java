@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Neud {
+public class Neud implements Comparable<Neud> {
     List<Morco> listeDeDecoupage;
     float chut;
     float poids;
@@ -27,5 +27,9 @@ public class Neud {
             if(this.listeDeDecoupage.get(i).Taille == Largeur) return true;
         }
         return false;
+    }
+    @Override
+    public int compareTo(Neud otherPerson) {
+        return Integer.compare((int) this.chut, (int) otherPerson.chut);
     }
 }

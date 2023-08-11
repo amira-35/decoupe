@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -20,11 +21,17 @@ public class Main {
         float minTube = 90;
         float TailleBobine = 1209;
         float TailleBobineDemander = 157F;
+        
+        List<Neud> OptimaleSolution = Tools.DFS(tailleDisponible,TailleBobineDemander,TailleBobine,minTube);
+        Collections.sort(OptimaleSolution);
+        for (int i = 0; i < OptimaleSolution.size(); i++) {
+            System.out.println("Le Chut = " + OptimaleSolution.get(i).chut);
+            System.out.println("La Liste de Découpage:");
+            for (int j = 0; j < OptimaleSolution.get(i).listeDeDecoupage.size(); j++) {
+                System.out.println("Morco: " + OptimaleSolution.get(i).listeDeDecoupage.get(j).Taille + " Nombre: " + OptimaleSolution.get(i).listeDeDecoupage.get(j).NbrMorco);
+            }
+            System.out.println("***************************************************");
 
-        Neud OptimaleSolution = Tools.DFS(tailleDisponible,TailleBobineDemander,TailleBobine,minTube);
-        System.out.println("Le Chutte Finale= " + OptimaleSolution.chut);
-        for (int i = 0; i < OptimaleSolution.listeDeDecoupage.size(); i++) {
-            System.out.println("La " + (i+1) + " ime Decoupage de Taille:" + OptimaleSolution.listeDeDecoupage.get(i).Taille +" Nombre:" + OptimaleSolution.listeDeDecoupage.get(i).NbrMorco);
         }
     }
 }
