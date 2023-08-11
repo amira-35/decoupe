@@ -35,15 +35,22 @@ public class Tools {
         int j;
         Neud neudTemp;
         for (int i = 0; i < TailleDisponible.size(); i++) {
-            if(! neud.verifierLargeur(TailleDisponible.get(i)) && neud.chut >= TailleDisponible.get(i)){
+            if(! neud.verifierLargeur(TailleDisponible.get(i)) && (neud.chut+3) >= TailleDisponible.get(i)){
                 neudTemp = new Neud(neud);
                 j =(int) (neud.chut/TailleDisponible.get(i));
+                if(j==0) {
+                    neudTemp.listeDeDecoupage.add(new Morco(1,TailleDisponible.get(i)));
+                    neudTemp.chut = 0;
+                    neudTemp.EvaluerLeChut(minB);
+                    listFils.add(neudTemp);
+                }
+                else{
                 for(int x=1; x<=j; x++){
                     neudTemp.listeDeDecoupage.add(new Morco(x,TailleDisponible.get(i)));
                     neudTemp.chut = neud.chut - x*TailleDisponible.get(i);
                     neudTemp.EvaluerLeChut(minB);
                     listFils.add(neudTemp);
-                }
+                }}
             }
         }
         return listFils;
