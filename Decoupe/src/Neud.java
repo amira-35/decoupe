@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Neud implements Comparable<Neud> {
+public class Neoud implements Comparable<Neud> {
     List<Morco> listeDeDecoupage;
     float chut;
     float poids;
